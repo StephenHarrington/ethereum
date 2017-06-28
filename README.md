@@ -12,7 +12,7 @@ This document expamds slightly on creating a private network for developers.
 ### Private network  
 
 Follow the instructions for [setting up a local private network](https://github.com/ethereum/go-ethereum/wiki/Setting-up-private-network-or-local-cluster) 
-from the official Ethereum instructions for setting up a private network on one machine and easily extensible to a network or multiple machines.
+from the official Ethereum docs.  Below is some additional information for setting up a private network on one machine which is easily extensible to multiple network machines.
 
 
 Missing a couple of steps.
