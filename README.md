@@ -8,7 +8,7 @@
 4. Browse the [command line arguments](https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options)
 5. Read the [private network](https://github.com/ethereum/go-ethereum/wiki/Private-network) docs.
 
-This document expamds slightly on creating a private network for developers.
+This document expands slightly on creating a private network for developers.
 
 ### Private network  
 
