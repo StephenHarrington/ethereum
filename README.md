@@ -19,8 +19,8 @@ from the official Ethereum docs.  Below is some additional information for setti
 Missing a couple of steps.
 
 1. [init genesis block](https://github.com/ethereum/go-ethereum#operating-a-private-network) on each geth datadir
-  * ```geth --datadir="/tmp/eth/private/01" init /path/to.your/genesis.json 2>> /tmp/eth/private/01.log```
-  * ```geth --datadir="/tmp/eth/private/02" init /path/to.your/genesis.json 2>> /tmp/eth/private/02.log```
+  * ```geth --datadir="/tmp/eth/private/01" --networkid 9999 init /path/to.your/genesis.json 2>> /tmp/eth/private/01.log```
+  * ```geth --datadir="/tmp/eth/private/02" --networkid 9999 init /path/to.your/genesis.json 2>> /tmp/eth/private/02.log```
 2. proper flags for nodiscover, bootnodes and identity
 
 On main host:
