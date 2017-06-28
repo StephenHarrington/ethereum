@@ -1,5 +1,14 @@
 # Ethereum
 
+### Prerequisites:
+
+1. [Read the docs](https://github.com/ethereum/go-ethereum)
+2. Install [geth](https://ethereum.github.io/go-ethereum/install/)
+2. Read about ethereum [enode url formats](https://github.com/ethereum/wiki/wiki/enode-url-format) 
+3. Browse the [command line arguments](https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options)
+
+This document expamds slightly on creating a private network for developers.
+
 ### Private network  
 
 Follow the instructions for [setting up a local private network](https://github.com/ethereum/go-ethereum/wiki/Setting-up-private-network-or-local-cluster) 
