@@ -99,4 +99,4 @@ From the main host console:
 ***Notice that the "peerNode_1" identity is displayed on the main host console.***
 
 
-Share the genesis.json and the encode string with others to create a private ethereum netowrk.
+Share the genesis.json and the encode string with others to create a private ethereum network.
