@@ -105,12 +105,13 @@ Share the genesis.json and the encode string with others to create a private eth
 
 ### AWS
 
-To connect to a node running on the internet:
+To connect to a node running on the internet, e.g. an AWS server:
 
 1. share the ```genesis.json``` file
 2. use the same --networkid flag on the guest node
 3. share the enode url found by the output of admin.nodeInfo.enode on the main node
  * ***NB*** change the ```[::]``` in the enode url to the external IP address of the main node
 4. admin.addPeer("enode://OTHERSTUFF@AWS_IP:30301?discport=0")
+5. Don't forget to open up the port (30301) to accept inbound traffic!
  
  
