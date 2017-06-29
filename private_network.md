@@ -26,10 +26,10 @@ Missing a couple of steps.
 On main host:
 
 ```
-geth --datadir="/tmp/eth/private/01" -verbosity 6 --ipcdisable --port 30301 --rpcport 8101 --bootnodes "enode://STUFF@[::]:30301" --identity MainNode --nodiscover --networkid 9999 console 2>> /tmp/eth/private/01.log
+geth --datadir="/tmp/eth/private/01" -verbosity 6 --ipcdisable --port 30301 --rpcport 8101 --bootnodes "enode://PKEY@[::]:30301" --identity MainNode --nodiscover --networkid 9999 console 2>> /tmp/eth/private/01.log
 ```
 
-where ***STUFF*** is the hex hash in the output from ```bootnode -nodekey boot.key```.  Make sure to replace the STUFF above with the output from bootnode!!
+where ***PKEY*** is the hex hash in the output from ```bootnode -nodekey boot.key```.  Make sure to replace the PKEY above with the output from bootnode!!
 
 On peer:
 
