@@ -3,19 +3,19 @@
 
 ### Setup  
 
-Assumed you have [git](https://git-scm.com/downloads) and [geth](https://geth.ethereum.org/downloads/) installed.  Optionally, install [mist]().  Docs and scripts can be found in this github [repo](https://github.com/StephenHarrington/ethereum/privatenet).  
+Assumed you have [git](https://git-scm.com/downloads) and [geth](https://geth.ethereum.org/downloads/) installed.  Optionally, install [mist]().  Docs and scripts can be found in this github [repo](https://github.com/StephenHarrington/ethereum).  
 
 Clone the repo using git:  
 
 ```bash
 
-git clone https://github.com/StephenHarrington/ethereum/privatenet
+git clone https://github.com/StephenHarrington/ethereum
 
 ```
 
 ### Directory structure  
 
-The repo creates 4 directories:
+The repo creates 3 directories:
 
 1. bin  
     * keystore_generator.js  
@@ -28,9 +28,7 @@ The repo creates 4 directories:
     * genesis.json  
     * keystore  
         pk_password_strings  
-3. contracts  
-    * deploy.js  
-4. log  
+3. log  
     * mining  
     * console  
     
