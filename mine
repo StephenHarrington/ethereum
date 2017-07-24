@@ -1,0 +1,13 @@
+geth \
+  --datadir .datadir \
+  --networkid 314159 \
+  --rpc \
+  --rpcapi "admin,debug,eth,miner,net,personal,shh,txpool,web3" \
+  --ipcpath .datadir/geth.ipc \
+  --nodiscover \
+  --mine \
+  --minerthreads 1 \
+  --verbosity 6 \
+  --rpccorsdomain "*" \
+  --identity "YOUR_NAME_HERE" \
+  --etherbase 0xf1ce596058071ad40c8eebfd15df1cb0ea4f34c0

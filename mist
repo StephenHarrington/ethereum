@@ -1,0 +1,5 @@
+mist \
+  --node-networkid 314159 \
+  --node-datadir="YOUR_FULLY_SPECIFIED_PATH/privatenet/.datadir" \
+  --rpc YOUR_FULLY_SPECIFIED_PATH/privatenet/.datadir/geth.ipc
+
