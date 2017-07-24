@@ -9,5 +9,5 @@ geth \
   --minerthreads 1 \
   --verbosity 6 \
   --rpccorsdomain "*" \
-  --identity "YOUR_NAME_HERE" \
+  --identity "STH" \
   --etherbase 0xf1ce596058071ad40c8eebfd15df1cb0ea4f34c0

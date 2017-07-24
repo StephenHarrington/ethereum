@@ -5,5 +5,5 @@ geth \
   --rpcapi "admin,debug,eth,miner,net,personal,shh,txpool,web3" \
   --ipcpath .datadir/geth.ipc \
   --nodiscover \
-  --identity "YOUR_NAME_HERE"
+  --identity "STH"
   console
