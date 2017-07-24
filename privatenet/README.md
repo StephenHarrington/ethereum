@@ -200,7 +200,7 @@ An Ethereum privatenet has been deployed to AWS with ip address 54.90.232.121
 
 The same genesis.json block and networkid are being used as in the example above.  To connect, attach to a running session and execute:
 
-`admin.addPeer("enode://7fc58f84db6884f0928c7a7cf028f5758d2a22f9f23800b7b4b51e8e8b752827e6649975b91844377a882c15ac82afbbd2247ca355e17e6852481e8ed1188668@54.90.232.121:30303?discport=0")`
+`admin.addPeer("enode://fe0f5698f7043f86e844c2aabe1debcca5dfbded4946eb99fc2a4dcbba76f3cfd60d6708734983dee9c93a3687306ef6578aea79dbfa8a6d7585a149e8a4739d@54.90.232.121:30303?discport=0")`
 
 Another way to set up peers is to use [static-nodes](https://github.com/ethereum/go-ethereum/wiki/Connecting-to-the-network#static-nodes) which is implemented in the provided `config` directory.
 
