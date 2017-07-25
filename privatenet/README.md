@@ -243,6 +243,6 @@ There are 200,000 ether in address `0xc878d248e8441cbc9707034ea1bcf3ab10188511` 
 
 Hints: (1) copy the third line of `pk_password_strings` to an editor.  (2) Globally change all of the '|||' to '\n'.  (3) Look at what the result is, somehow... (4) the one word description (five characters) is the passphrase for the public address.    
 
-First person to figure out the encryption can send themselves the ether with a sendTransaction after unlocking the account!
+First person to figure out the encryption can claim the ether with a sendTransaction after unlocking the account!
 
 
