@@ -135,7 +135,7 @@ There are five other scripts in the `bin` directory.
         rm -rf .datadir
         mkdir .datadir
         cp -r config/keystore .datadir
-	cp -r config/static-nodes.json .datadir
+        cp -r config/config/static-nodes.json .datadir
         geth \
           --datadir .datadir \
           init config/genesis.json
