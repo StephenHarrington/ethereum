@@ -141,7 +141,8 @@ There are five other scripts in the `bin` directory.
           init config/genesis.json
         ```
         
-        `bin/init` will create a hidden directory `.datadir` where the blocks and all other information will be stored.  The keystore from our `config` directory is copied and `geth` is initialized with the genesis block in `genesis.json`.    
+        `bin/init` will create a hidden directory `.datadir` where the blocks and all other information will be stored.  The
+	keystore from our `config` directory is copied and `geth` is initialized with the genesis block in `genesis.json`.    
         
     * console  
         ```bash
