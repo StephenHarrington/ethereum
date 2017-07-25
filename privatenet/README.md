@@ -3,7 +3,7 @@
 
 ### Setup  
 
-Assumed you have [git](https://git-scm.com/downloads) and [geth](https://geth.ethereum.org/downloads/) installed.  Optionally, install [mist]().  Docs and scripts can be found in this github [repo](https://github.com/StephenHarrington/ethereum).  
+Assumed you have [git](https://git-scm.com/downloads) and [geth](https://geth.ethereum.org/downloads/) installed.  Optionally, install [mist](https://github.com/ethereum/mist/releases).  Docs and scripts can be found in this github [repo](https://github.com/StephenHarrington/ethereum).  
 
 Clone the repo using git:  
 
@@ -15,7 +15,7 @@ git clone https://github.com/StephenHarrington/ethereum
 
 ### Directory structure  
 
-The repo creates 3 directories:
+The repo creates 3 directories in ethereum/privatenet:
 
 1. bin  
     * keystore_generator.js  
@@ -27,7 +27,8 @@ The repo creates 3 directories:
 2. config  
     * genesis.json  
     * keystore  
-        pk_password_strings  
+        pk_password_strings
+    * static-nodes.json
 3. log  
     * mining  
     * console  
@@ -37,7 +38,9 @@ The repo creates 3 directories:
 
 Before initializing the private network, we create a wallet keystore to provide public keys for coinbase and any other addresses we might allocate coins to in the genesis block.   
 
-For the purpose of this tutorial, a file `pk_password_strings` is provided with clear text private keys.  **You would never do this in practice with addresses storing convertable coins.**  
+For the purpose of this tutorial, a file `pk_password_strings`, is provided with clear text private keys.  **You would never do this in practice with addresses storing convertable coins.** 
+
+You shoud change these private keys.  
 
 In the bin directory is a javascript file `keystore_generator.js`.   
 
@@ -60,7 +63,7 @@ In our example, `pk_password_strings` which has three separate lines to generate
 
 *Can you figure out what the third private key is?*  
 
-You should change the entires in `pk_password_strings` othewise, you will have the same addresses when we explore the shared, private network.  
+You should change the entires in `pk_password_strings` otherwise, you will have the same addresses when we explore the shared, private network.  
 
 Note also that `keystore_generator.js` includes the wallet passphrase:
   
@@ -68,7 +71,7 @@ Note also that `keystore_generator.js` includes the wallet passphrase:
 var wallet_password = "this is my super secret wallet password";
 ```
 
-**This should be changed for to secure your wallet with convertable coins.**
+**This should be changed to secure your wallet for convertable coins.**
   
   
 Executing `keystore_generator.js` with the provided private keys in `pk_password_strings` produces three files in `config/keystore`:
@@ -79,7 +82,7 @@ UTC--2017-07-24T13-24-11.468Z--54cb10fad1892ecc5c05fb58bddfbf495ca1b379
 UTC--2017-07-24T13-24-11.894Z--bab65c73307ccfc7f4b98e654fd65c320aa52190
 ```  
 
-Note the keystore file structure includes the private key, e.g. `f1ce596058071ad40c8eebfd15df1cb0ea4f34c0` is our coinbase public key.  
+Note the keystore file structure includes the private key, e.g. `f1ce596058071ad40c8eebfd15df1cb0ea4f34c0`, which is our coinbase public key.  Of course, the UTC timestamp will differ with your implementation.
 
 
 ### The Genesis block  
@@ -113,15 +116,18 @@ The Ethereum Homestead docs provide a [sample genesis file](http://ethdocs.org/e
 }
 ```
   
-  
-Many genesis files in the docs or in various tutorials are missing the `config` object or have a `chainId` set to 0.  If the `config` object is missing or the `chainId` is set to `0`, the private network will fail to initialize when using the latest Ethereum Homestead release.  This will probably change in the future, so YMMV.  
+**md5sum `a339153f752020d7839589ddb3aa73c7`  genesis.json**
 
-If you executed the `keystore_generator.js` with the default `config/keystore/pk_password_strings` private keys, then the first public key created with be `f1ce596058071ad40c8eebfd15df1cb0ea4f34c0`.  This key is copied to the `coinbase` entry in the `genesis.json` file, with a leading `0x` and we allocate 200,000 ether in the `alloc` object *without* the leading `0x`, see above.  
+Many genesis files in the docs or in various tutorials are missing the `config` object or have a `chainId` set to 0.  If the `config` object is missing or the `chainId` is set to `0`, the private network will fail to initialize when using the latest Ethereum Homestead release.  This will probably change in the future, YMMV.  
+
+If you executed the `keystore_generator.js` with the default `config/keystore/pk_password_strings` private keys, then the first public key created will be `f1ce596058071ad40c8eebfd15df1cb0ea4f34c0`.  You should copy this key to the `coinbase` entry in the `genesis.json` file, with a leading `0x`.  Also allocate 200,000 ether in the `alloc` object *without* the leading `0x`, see above.  
 
 
 ### Scripts
 
-There are five other scripts in the `bin` directory:
+There are five other scripts in the `bin` directory.  
+
+**You may need to make the scripts executable** (e.g. on unix `chmod +x bin/*`)
 
 1. bin  
     * init  
@@ -129,6 +135,7 @@ There are five other scripts in the `bin` directory:
         rm -rf .datadir
         mkdir .datadir
         cp -r config/keystore .datadir
+	cp -r config/static-nodes.json .datadir
         geth \
           --datadir .datadir \
           init config/genesis.json
@@ -167,7 +174,7 @@ There are five other scripts in the `bin` directory:
           --rpc YOUR_FULLY_SPECIFIED_PATH/privatenet/.datadir/geth.ipc
         ```
         
-        `bin\mist` can be run at this time.  Note that the log message can be redirected to a log file (`log\mist.log`).  You should see look for two messages: Connect to {"path":"...../privatenet/.datadir/geth.ipc"} and Network is privatenet.  **Note well that the parameters for the node-datadir and rpc flags are fully qualified paths.**  You must change the YOUR_FULLY_SPECIFIED_PATH to your specific installation.
+        `bin\mist` can be run at this time.  Note that the log message can be redirected to a log file (`log\mist.log`).  You should look for two messages: `Connect to {"path":"...../privatenet/.datadir/geth.ipc"}` and `Network is privatenet.`  Note  that the parameters for the node-datadir and rpc flags are fully qualified paths.  **You must change the YOUR_FULLY_SPECIFIED_PATH to your specific installation in the `bin\mist` script.**
 
     * mine  
         ```bash
@@ -185,22 +192,57 @@ There are five other scripts in the `bin` directory:
           --etherbase 0xf1ce596058071ad40c8eebfd15df1cb0ea4f34c0
         ```
         
-        `bin\mine` is the usual way to start-up a private network since blocks and transactions will not be written to the blockchain without a miner.  Note the network id, the ipcpath and the etherbase account which is the same as our coinbase in the `genesis.json` file from initization.  The `bin\mine` command should also have it's output redirected to a log file and run in the background.
+        `bin\mine` is the usual way to start-up a private network since blocks and transactions will not be written to the blockchain without a miner.  Note the network id, the ipcpath and the etherbase account which is the same as our coinbase in the `genesis.json` file from initization.  The `bin\mine` command should also have its output redirected to a log file and run in the background (`bin/mine 2>>log/mine.log`).
 
 #### Congratulations you now have a fully functioning Ethereum private net running on your local host. 
 
 
 ### Shared Privatenet 
 
-A share private network is possible with a few minor changes.  The version on your locahost could be shared but for larger scale use a web service we use a web service.
+A share private network is possible with a few minor changes.  The version on your locahost could be shared but for many connected peers use a web service.
 
 #### AWS
 
 An Ethereum privatenet has been deployed to AWS with ip address 54.90.232.121
 
-The same genesis.json block and networkid are being used as in the example above.  To connect, attach to a running session and execute:
+The same genesis.json block and networkid must beg used as in the examples above.  
+
+The AWS peer enode (ethereum node) is incorporated by using the [static-nodes.json](https://github.com/ethereum/go-ethereum/wiki/Connecting-to-the-network#static-nodes) which is implemented in the `config` directory.
+
+
+The same connection can be accomplished from the javascript console:
 
 `admin.addPeer("enode://fe0f5698f7043f86e844c2aabe1debcca5dfbded4946eb99fc2a4dcbba76f3cfd60d6708734983dee9c93a3687306ef6578aea79dbfa8a6d7585a149e8a4739d@54.90.232.121:30303?discport=0")`
 
-Another way to set up peers is to use [static-nodes](https://github.com/ethereum/go-ethereum/wiki/Connecting-to-the-network#static-nodes) which is implemented in the provided `config` directory.
+You can check to see if your connected by typing in the javascript console `admin.peers`.  If you have done everything correctly, you should see something like the following.  Note the name includes `AWSmain`.
+
+```javascript
+> admin.peers
+[{
+    caps: ["eth/62", "eth/63"],
+    id: "fe0f5698f7043f86e844c2aabe1debcca5dfbded4946eb99fc2a4dcbba76f3cfd60d6708734983dee9c93a3687306ef6578aea79dbfa8a6d7585a149e8a4739d",
+    name: "Geth/AWSmain/v1.6.7-stable-ab5646c5/linux-amd64/go1.8.1",
+    network: {
+      localAddress: "192.168.0.99:12345",
+      remoteAddress: "54.90.232.121:30303"
+    },
+    protocols: {
+      eth: {
+        difficulty: 1121957459,
+        head: "0x274c7f6082ff1032e48871328f1287d6b6f66cec506a309daf350c36116d7ac6",
+        version: 63
+      }
+    }
+}]
+```
+
+
+### Challenge
+
+There are 200,000 ether in address `0xc878d248e8441cbc9707034ea1bcf3ab10188511` that is the passphrase of the ?something? that is the third private key included in the `pk_password_strings` config file.  
+
+Hints: (1) copy the third line of `pk_password_strings` to an editor.  (2) Globally change all of the '|||' to '\n'.  (3) Look at what the result is, somehow... (4) the one word description (five characters) is the passphrase for the public address.    
+
+First person to figure out the encryption can send themselves the ether with a sendTransaction after unlocking the account!
+
 
