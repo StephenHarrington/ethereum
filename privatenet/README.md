@@ -3,7 +3,7 @@
 
 ### Setup  
 
-Assumed you have [git](https://git-scm.com/downloads) and [geth](https://geth.ethereum.org/downloads/) installed.  Optionally, install [mist](https://github.com/ethereum/mist/releases).  Docs and scripts can be found in this github [repo](https://github.com/StephenHarrington/ethereum).  
+Assumed you have [git](https://git-scm.com/downloads), [node](https://docs.npmjs.com/getting-started/installing-node) and [geth](https://geth.ethereum.org/downloads/) installed.  Optionally, install [mist](https://github.com/ethereum/mist/releases).  Docs and scripts can be found in this github [repo](https://github.com/StephenHarrington/ethereum).  
 
 Clone the repo using git:  
 
@@ -40,7 +40,7 @@ Before initializing the private network, we create a wallet keystore to provide 
 
 For the purpose of this tutorial, a file `pk_password_strings`, is provided with clear text private keys.  **You would never do this in practice with addresses storing convertable coins.** 
 
-You shoud change these private keys.  
+You should change these private keys.  
 
 In the bin directory is a javascript file `keystore_generator.js`.   
 
@@ -74,7 +74,7 @@ var wallet_password = "this is my super secret wallet password";
 **This should be changed to secure your wallet for convertable coins.**
   
   
-Executing `keystore_generator.js` with the provided private keys in `pk_password_strings` produces three files in `config/keystore`:
+Executing `node keystore_generator.js` with the provided private keys in `pk_password_strings` produces three files in `config/keystore`:
 
 ```javascript
 UTC--2017-07-24T13-24-11.050Z--f1ce596058071ad40c8eebfd15df1cb0ea4f34c0
@@ -235,6 +235,12 @@ You can check to see if your connected by typing in the javascript console `admi
     }
 }]
 ```
+
+#### Mist on MAC OS
+
+On MACs you need to either change the bin/mist script to point to the correct Mist executable or create a symbolic link in a global directory by running this command:
+
+`ln -s /Applications/Mist.app/Contents/MacOS/Mist /usr/local/bin/mist`
 
 
 ### Challenge
