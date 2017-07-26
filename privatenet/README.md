@@ -205,7 +205,7 @@ A share private network is possible with a few minor changes.  The version on yo
 
 An Ethereum privatenet has been deployed to AWS with ip address 54.90.232.121
 
-The same genesis.json block and networkid must beg used as in the examples above.  
+The same genesis.json block and networkid must be used as in the examples above.  
 
 The AWS peer enode (ethereum node) is incorporated by using the [static-nodes.json](https://github.com/ethereum/go-ethereum/wiki/Connecting-to-the-network#static-nodes) which is implemented in the `config` directory.
 
@@ -235,6 +235,8 @@ You can check to see if your connected by typing in the javascript console `admi
     }
 }]
 ```
+
+In creating your own privatenet you would remove or change the `config/static-nodes.json` file.
 
 #### Mist on MAC OS
 
